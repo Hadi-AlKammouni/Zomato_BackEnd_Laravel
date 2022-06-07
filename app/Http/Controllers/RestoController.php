@@ -39,4 +39,14 @@ class RestoController extends Controller{
         ], 200);
     }
 
+    // Function to get restaurants by category
+    public function getRestoByCategory($category){
+        $resto = Restaurant::where('category','=',$category)->get();
+        
+        return response()->json([
+            "status" => "Success",
+            "results" => $resto
+        ], 200);
+    }
+
 }
