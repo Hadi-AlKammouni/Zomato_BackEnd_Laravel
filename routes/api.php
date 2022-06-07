@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestoController;
 
 Route::get('/restos', [RestoController::class, 'getAllRestos']);
-
+Route::post('/add_resto', [RestoController::class, 'addResto']);
 
 
 
