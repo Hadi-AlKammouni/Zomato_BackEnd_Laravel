@@ -9,10 +9,13 @@ use App\Models\Restaurant;
 class RestoController extends Controller{
     
     // Function to get all restuarants 
-    public function getAllRestos(){
+    public function getAllRestos($id = null){
         // echo "Hello World1 !";
-
+        if($id != null){
+            $restos = Restaurant::where('restaurant_id','=',$id)->get();
+        }else{    
         $restos = Restaurant::all();
+        }
         
         return response()->json([
             "status" => "Success",
