@@ -22,4 +22,19 @@ class UserController extends Controller{
         ], 200);
     }
 
+    // Function to let the user to sign up
+    public function signUp(Request $request){
+
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->type = $request->type;
+
+        $user->save();
+
+        return response()->json([
+            "status" => "Success"
+        ], 200);
+    }
 }
