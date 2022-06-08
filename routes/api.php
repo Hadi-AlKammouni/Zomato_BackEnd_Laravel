@@ -15,6 +15,7 @@ use App\Http\Controllers\UserController;
 
 Route::get('/all_users/{id?}', [UserController::class, 'getAllUsers']);
 Route::post('/register', [UserController::class, 'signUp']);
+Route::post('/log_in', [UserController::class, 'logIn']);
 
 
 

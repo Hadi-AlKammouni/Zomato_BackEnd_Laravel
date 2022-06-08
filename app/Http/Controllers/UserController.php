@@ -38,4 +38,23 @@ class UserController extends Controller{
             "status" => "Success"
         ], 200);
     }
+
+    // Function that check if the email & password inputs are valid upon logging in
+    public function login(Request $request){
+        $user = User::where('email', '=', $request->email)->first();
+        $password = hash('sha256', $request->password);
+        $password_check = User::where('password', '=', $password)->first();
+        if($user && $password_check ){
+            return response()->json([
+                "status" => "Success",
+                "users" => $user
+            ], 200);
+        }else{
+            return response()->json([
+                "status" => "fail",
+                "users" => "Wrong email or/and password"
+            ], 200);
+        }
+    }
+
 }
